@@ -14,14 +14,16 @@
     transform-style: preserve-3d;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
       rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    &:hover {
-      border: 2px solid white;
-    }
+    font-family: "Russo One", sans-serif;
   }
 
   .flip-card-front {
     transform: rotateY(180deg);
-    -webkit-text-stroke: 0.5px whitesmoke;
+    p {
+      &:nth-child(2) {
+        -webkit-text-stroke: 2px black;
+      }
+    }
   }
 
   .flip-card-front,

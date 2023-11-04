@@ -18,10 +18,12 @@ const BoardContainer = () => {
     [6, 7, 8],
   ];
 
+  // --------------useEffect: RUNS CHECK FOR WINNER FUNCTION EVERY NEW MOVE-------------- //
   useEffect(() => {
     checkForWinner();
   }, [board]);
 
+  // --------------CHECKS FOR WINNER FUNCTION-------------- //
   const checkForWinner = () => {
     const allEqual = (array: string[]) =>
       array.every((value) => value === array[0] && value !== null);
@@ -37,6 +39,8 @@ const BoardContainer = () => {
       }
     });
   };
+
+  // --------------PLAYER MOVE-------------- //
 
   const handleClick = (index: number) => {
     if (board[index] === null) {
@@ -55,18 +59,19 @@ const BoardContainer = () => {
     return false;
   };
 
+  // --------------RESET GAME-------------- //
   const handleReset = () => {
     setBoard(Array(9).fill(null));
     setCurrentPlayer("O");
     setIsGameOver(true);
     setWinner(null);
 
-    setTimeout(() => setIsGameOver(false), 800);
+    setTimeout(() => setIsGameOver(false), 700);
   };
 
   return (
-    <main className="flex flex-col gap-14 md:gap-4">
-      <h1 className="text-[2.3rem] md:text-[3.2rem] border-b-2 w-fit m-auto mb-5 text-center text-white">
+    <main className="flex flex-col gap-10 md:gap-4">
+      <h1 className="board-title text-[1.7rem] md:text-[3.2rem] border-b-2 w-fit m-auto mb-5 text-center text-white">
         TIC-TAC-MEMO 🧠
       </h1>
 
