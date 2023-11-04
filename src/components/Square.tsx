@@ -30,7 +30,7 @@ const Square: React.FC<SquareProps> = ({
     >
       <div className={`flip-card-inner ${isActive} ${isGameOver && "active"} `}>
         <div className="flip-card-front bg-gradient-to-b from-[#2980B9] from-25% via-[#6DD5FA] via-75% to-[#ffffff] to-100%">
-          <p className="md:text-[10rem] bg-clip-text bg-gradient-to-b text-transparent from-[#e66465] to-[#9198e5]">
+          <p className="md:text-[10rem] text-[4rem] bg-clip-text bg-gradient-to-b text-transparent from-[#e66465] to-[#9198e5]">
             {board[index]}
           </p>
         </div>

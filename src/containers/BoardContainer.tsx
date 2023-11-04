@@ -65,8 +65,8 @@ const BoardContainer = () => {
   };
 
   return (
-    <main className="flex flex-col mb-[27px]">
-      <h1 className="text-[2.3rem] lg:text-[3.2rem] border-b-2 w-fit m-auto mb-5 text-center text-white">
+    <main className="flex flex-col gap-14 md:gap-4">
+      <h1 className="text-[2.3rem] md:text-[3.2rem] border-b-2 w-fit m-auto mb-5 text-center text-white">
         TIC-TAC-MEMO 🧠
       </h1>
 
