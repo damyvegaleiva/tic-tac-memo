@@ -76,7 +76,7 @@ const BoardContainer = () => {
         </h1>
       ) : (
         <div className="board-container w-[450px] gap-1 h-[450px] flex flex-row flex-wrap justify-around items-center m-auto mb-5">
-          {board.map((square, index) => (
+          {board.map((_, index) => (
             <Square
               key={index}
               handleClick={handleClick}
