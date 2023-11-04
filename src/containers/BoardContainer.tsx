@@ -66,7 +66,7 @@ const BoardContainer = () => {
 
   return (
     <main className="flex flex-col mb-[27px]">
-      <h1 className="text-[3.2rem] border-b-2 w-fit m-auto mb-5 text-center text-white">
+      <h1 className="text-[2.3rem] lg:text-[3.2rem] border-b-2 w-fit m-auto mb-5 text-center text-white">
         TIC-TAC-MEMO 🧠
       </h1>
 
@@ -75,7 +75,7 @@ const BoardContainer = () => {
           Player {winner} Wins
         </h1>
       ) : (
-        <div className="board-container w-[450px] gap-1 h-[450px] flex flex-row flex-wrap justify-around items-center m-auto mb-5">
+        <div className="board-container w-[300px] h-[300px] md:w-[700px] gap-3 md:h-[700px] flex flex-row flex-wrap justify-around items-center m-auto mb-5">
           {board.map((_, index) => (
             <Square
               key={index}

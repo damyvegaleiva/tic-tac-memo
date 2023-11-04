@@ -1,6 +1,4 @@
 .flip-card {
-  width: 140px;
-  height: 140px;
   background: transparent;
   perspective: 1000px;
   &:hover {
@@ -16,7 +14,9 @@
     transform-style: preserve-3d;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
       rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    // transform: rotateY(180deg);
+    &:hover {
+      border: 2px solid white;
+    }
   }
 
   .flip-card-front {
