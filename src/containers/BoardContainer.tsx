@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import Square from "../components/Square";
+import GameTitle from "../components/GameTitle";
+import Board from "../components/Board";
+import ResetButton from "../components/ResetButton";
+import Winner from "../components/Winner";
 
 const BoardContainer = () => {
   const [currentPlayer, setCurrentPlayer] = useState<string>("O");
@@ -70,35 +73,20 @@ const BoardContainer = () => {
   };
 
   return (
-    <main className="flex flex-col gap-10 md:gap-4">
-      <h1 className="board-title text-[1.7rem] md:text-[3.2rem] border-b-2 w-fit m-auto mb-5 text-center text-white">
-        TIC-TAC-MEMO 🧠
-      </h1>
+    <main className="flex flex-col gap-10 md:gap-8">
+      <GameTitle />
 
       {winner ? (
-        <h1 className="text-center text-[3.5rem] text-white my-20">
-          Player {winner} Wins
-        </h1>
+        <Winner winner={winner} />
       ) : (
-        <div className="board-container w-[300px] h-[300px] md:w-[700px] gap-3 md:h-[700px] flex flex-row flex-wrap justify-around items-center m-auto mb-5">
-          {board.map((_, index) => (
-            <Square
-              key={index}
-              handleClick={handleClick}
-              index={index}
-              board={board}
-              isGameOver={isGameOver}
-            />
-          ))}
-        </div>
+        <Board
+          handleClick={handleClick}
+          isGameOver={isGameOver}
+          board={board}
+        />
       )}
 
-      <button
-        className="w-[150px] h-[50px] border-2 rounded-md border-white m-auto transition duration-1000 text-white hover:bg-white hover:text-black"
-        onClick={handleReset}
-      >
-        RESET GAME
-      </button>
+      <ResetButton handleReset={handleReset} />
     </main>
   );
 };

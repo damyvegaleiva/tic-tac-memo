@@ -15,13 +15,14 @@
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
       rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     font-family: "Russo One", sans-serif;
+    border: 2px solid white;
   }
 
   .flip-card-front {
     transform: rotateY(180deg);
     p {
       &:nth-child(2) {
-        -webkit-text-stroke: 2px black;
+        -webkit-text-stroke: 1px white;
       }
     }
   }
@@ -37,6 +38,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    background: url("./images/background.jpg") center;
+    background-size: auto;
   }
 }
 
