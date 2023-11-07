@@ -40,8 +40,7 @@ const BoardContainer = () => {
 
       if (allEqual(squares)) {
         setIsGameOver(true);
-        setTimeout(() => setWinner(squares[0]), 1200);
-
+        setWinner(squares[0]);
         return;
       }
     });
@@ -70,10 +69,7 @@ const BoardContainer = () => {
     setBoard(Array(9).fill(null));
     setCurrentPlayer("O");
     setIsGameOver(false);
-
-    setTimeout(() => {
-      setWinner(null);
-    }, 600);
+    setWinner(null);
   };
 
   return (
