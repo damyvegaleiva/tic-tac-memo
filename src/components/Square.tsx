@@ -1,11 +1,12 @@
 import { useState } from "react";
-import "./Square.scss";
+import Card from "./Card";
 
 type SquareProps = {
   handleClick: (index: number) => boolean;
   index: number;
   board: string[];
   isGameOver: boolean;
+  isTied: boolean;
 };
 
 const Square: React.FC<SquareProps> = ({
@@ -13,15 +14,28 @@ const Square: React.FC<SquareProps> = ({
   index,
   board,
   isGameOver,
+  isTied,
 }) => {
   const [isActive, setIsActive] = useState<string>("");
 
   // ----DISPATCH HANDLECLICK AND FLIPS CARD BY SETTING/REMOVING THE ACTIVE CLASS----- //
   const handleAction = () => {
     if (handleClick(index)) {
-      setIsActive("active");
-      setTimeout(() => setIsActive(""), 900);
+      setIsActive("active border-[#19C0F5]");
+
+      setTimeout(() => {
+        setIsActive("");
+      }, 900);
+
+      return;
     }
+
+    // -----SHOWS ALERT FOR CARD ALREADY SELECTED----- //
+    setIsActive("md:hover:border-red-500 border-red-500 animate-shake");
+
+    setTimeout(() => {
+      setIsActive("");
+    }, 400);
   };
 
   return (
@@ -30,34 +44,14 @@ const Square: React.FC<SquareProps> = ({
       onClick={() => handleAction()}
     >
       {/* -------------CARD INNER------------- */}
-      <div
-        className={`flip-card-inner ${isActive} ${
-          isGameOver && "active"
-        } md:hover:border-2 md:hover:border-[#19C0F5]`}
-      >
-        {/* -------------CARD FRONT------------- */}
-        <div className="flip-card-front bg-gradient-to-b from-[#2980B9] from-25% via-[#6DD5FA] via-75% to-[#ffffff] to-100%">
-          <p className="absolute text-[.70rem] top-1 z-10 md:text-[1.5rem] md:top-2 text-white">
-            TIC-TAC-MEMO
-          </p>
-          <p className="md:text-[8rem] z-10 text-[3.5rem] bg-clip-text bg-gradient-to-t text-transparent from-[#19C0F5] via-[#003865] to-[#1DA8DF]">
-            {board[index]}
-          </p>
-          <p className="absolute z-0 md:text-[2.7rem] text-[1.1rem] bottom-0 md:-bottom-2">
-            🧠
-          </p>
-        </div>
 
-        {/* -------------CARD BACK------------- */}
-        <div className="flip-card-back">
-          <p className="absolute text-[.70rem] bottom-4 z-10 md:text-[1.5rem] font-normal md:bottom-6 text-white">
-            TIC-TAC-MEMO
-          </p>
-          <p className="absolute z-0 md:text-[7rem] text-[2.5rem] top-0 md:-top-3">
-            🧠
-          </p>
-        </div>
-      </div>
+      <Card
+        isActive={isActive}
+        isGameOver={isGameOver}
+        board={board}
+        index={index}
+        isTied={isTied}
+      />
     </div>
   );
 };

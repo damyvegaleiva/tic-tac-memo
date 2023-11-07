@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import GameTitle from "../components/GameTitle";
 import Board from "../components/Board";
-import ResetButton from "../components/ResetButton";
-import Winner from "../components/Winner";
+import WinnerModal from "../components/WinnerModal";
 
 const BoardContainer = () => {
   const [currentPlayer, setCurrentPlayer] = useState<string>("O");
   const [board, setBoard] = useState<string[]>(Array(9).fill(null));
   const [winner, setWinner] = useState<string | null>(null);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [isTied, setIsTied] = useState<boolean>(false);
 
   const winnerSquares = [
     [0, 1, 2],
@@ -23,13 +23,17 @@ const BoardContainer = () => {
 
   // --------------useEffect: RUNS CHECK FOR WINNER FUNCTION EVERY NEW MOVE-------------- //
   useEffect(() => {
+    const allEqual = () => {
+      return board.every((value: string) => value !== null);
+    };
     checkForWinner();
+    setIsTied(allEqual());
   }, [board]);
 
   // --------------CHECKS FOR WINNER FUNCTION-------------- //
   const checkForWinner = () => {
     const allEqual = (array: string[]) =>
-      array.every((value) => value === array[0] && value !== null);
+      array.every((value: string) => value === array[0] && value !== null);
 
     winnerSquares.map((setOfNumbers) => {
       const squares: string[] = setOfNumbers.map((number) => board[number]);
@@ -44,7 +48,6 @@ const BoardContainer = () => {
   };
 
   // --------------PLAYER MOVE-------------- //
-
   const handleClick = (index: number) => {
     if (board[index] === null) {
       setBoard((prev) => {
@@ -66,27 +69,31 @@ const BoardContainer = () => {
   const handleReset = () => {
     setBoard(Array(9).fill(null));
     setCurrentPlayer("O");
-    setIsGameOver(true);
-    setWinner(null);
+    setIsGameOver(false);
 
-    setTimeout(() => setIsGameOver(false), 700);
+    setTimeout(() => {
+      setWinner(null);
+    }, 600);
   };
 
   return (
-    <main className="flex flex-col gap-10 md:gap-8">
+    <main className="flex flex-col gap-10 md:gap-4">
       <GameTitle />
 
-      {winner ? (
-        <Winner winner={winner} />
-      ) : (
-        <Board
-          handleClick={handleClick}
-          isGameOver={isGameOver}
-          board={board}
-        />
-      )}
+      <Board
+        handleClick={handleClick}
+        isGameOver={isGameOver}
+        board={board}
+        isTied={isTied}
+      />
 
-      <ResetButton handleReset={handleReset} />
+      {winner || isTied ? (
+        <WinnerModal
+          winner={winner}
+          isTied={isTied}
+          handleReset={handleReset}
+        />
+      ) : null}
     </main>
   );
 };

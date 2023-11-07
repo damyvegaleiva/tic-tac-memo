@@ -4,6 +4,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import "./styles/Square.scss";
 
 html {
   box-sizing: border-box;
@@ -26,4 +27,9 @@ body {
 
 .board-title {
   font-family: "Bungee Shade", sans-serif;
+}
+
+.winner-title {
+  font-family: "Bungee Shade", sans-serif;
+  color: #19c0f5;
 }
