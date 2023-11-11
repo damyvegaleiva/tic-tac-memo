@@ -5,20 +5,26 @@ import WinnerModal from "../components/WinnerModal";
 
 const BoardContainer = () => {
   const [currentPlayer, setCurrentPlayer] = useState<string>("O");
-  const [board, setBoard] = useState<string[]>(Array(9).fill(null));
+  const [board, setBoard] = useState<string[]>(Array(12).fill(null));
   const [winner, setWinner] = useState<string | null>(null);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [isTied, setIsTied] = useState<boolean>(false);
 
   const winnerSquares = [
     [0, 1, 2],
-    [0, 3, 6],
+    [0, 5, 10],
     [0, 4, 8],
-    [1, 4, 7],
+    [1, 2, 3],
+    [1, 5, 9],
+    [1, 6, 11],
     [2, 5, 8],
-    [2, 4, 6],
-    [3, 4, 5],
-    [6, 7, 8],
+    [2, 6, 10],
+    [3, 6, 9],
+    [3, 7, 11],
+    [4, 5, 6],
+    [5, 6, 7],
+    [8, 9, 10],
+    [9, 10, 11],
   ];
 
   // --------------useEffect: RUNS CHECK FOR WINNER FUNCTION EVERY NEW MOVE-------------- //
@@ -66,7 +72,7 @@ const BoardContainer = () => {
 
   // --------------RESET GAME-------------- //
   const handleReset = () => {
-    setBoard(Array(9).fill(null));
+    setBoard(Array(12).fill(null));
     setCurrentPlayer("O");
     setIsGameOver(false);
     setWinner(null);

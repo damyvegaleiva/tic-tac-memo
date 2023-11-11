@@ -40,7 +40,7 @@ const Square: React.FC<SquareProps> = ({
 
   return (
     <div
-      className="transition-transform w-[100px] h-[140px] duration-300 md:h-[250px] md:w-[200px] flip-card md:hover:scale-105"
+      className="transition-transform w-[75px] h-[135px] duration-300 md:w-[175px] md:h-[250px] lg:h-[250px] lg:w-[190px] md:hover:scale-105 flip-card"
       onClick={() => handleAction()}
     >
       {/* -------------CARD INNER------------- */}
