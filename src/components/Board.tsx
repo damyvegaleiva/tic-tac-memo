@@ -14,7 +14,7 @@ const Board: React.FC<BoardProps> = ({
   isTied,
 }) => {
   return (
-    <div className=" w-[360px] md:w-[750px] lg:w-[800px] gap-1.5 md:gap-y-4 md:gap-x-3 flex flex-row flex-wrap justify-around items-center m-auto ">
+    <article className=" w-[360px] md:w-[750px] lg:w-[800px] gap-1.5 md:gap-y-4 md:gap-x-3 flex flex-row flex-wrap justify-around items-center m-auto ">
       {board.map((_, index) => (
         <Square
           key={index}
@@ -25,7 +25,7 @@ const Board: React.FC<BoardProps> = ({
           isTied={isTied}
         />
       ))}
-    </div>
+    </article>
   );
 };
 
