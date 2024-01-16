@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import GameTitle from "../components/GameTitle";
 import Board from "../components/Board";
 import WinnerModal from "../components/WinnerModal";
 
@@ -79,9 +78,7 @@ const BoardContainer = () => {
   };
 
   return (
-    <main className="flex flex-col gap-10 md:gap-4">
-      <GameTitle />
-
+    <main className="flex flex-col gap-10 mt-10 md:gap-4">
       <Board
         handleClick={handleClick}
         isGameOver={isGameOver}

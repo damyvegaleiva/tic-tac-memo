@@ -9,20 +9,69 @@
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  height: 100vh;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+* {
+  box-sizing: border-box;
+  position: relative;
+  min-width: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 body {
+  min-height: 100dvh;
   height: 100vh;
   background: url("/images/background.jpg") center center;
+}
+
+.home-container {
+  font-family: "Bungee Shade", sans-serif;
+
+  .rules-container {
+    font-family: "Russo One", sans-serif;
+
+    button {
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: blinky 0.8s alternate infinite;
+
+      &:hover {
+        animation: 0;
+      }
+
+      &::after {
+        content: "";
+        width: 0;
+        border-radius: 15px;
+        height: 5px;
+        background: rgb(255, 255, 255);
+        transition: width 0.5s ease-in-out;
+        position: absolute;
+        bottom: 0;
+      }
+
+      &:hover::after {
+        width: 40%;
+        animation: blinky 0.8s alternate infinite;
+      }
+    }
+  }
+
+  button {
+    font-family: "Bungee Shade", sans-serif;
+  }
 }
 
 .board-title {
@@ -32,4 +81,13 @@ body {
 .winner-title {
   font-family: "Bungee Shade", sans-serif;
   color: #19c0f5;
+}
+
+@keyframes blinky {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
