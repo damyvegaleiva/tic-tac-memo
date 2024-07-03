@@ -78,7 +78,11 @@ const BoardContainer = () => {
   };
 
   return (
-    <main className="flex flex-col gap-10 mt-10 md:gap-4">
+    <main className="flex flex-col gap-5 mt-10 md:gap-4">
+      <h2 className="text-lg text-center text-white md:text-3xl font-RussoOne">
+        Turn: <span className="underline">Player {currentPlayer}</span>
+      </h2>
+
       <Board
         handleClick={handleClick}
         isGameOver={isGameOver}

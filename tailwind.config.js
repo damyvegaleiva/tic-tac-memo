@@ -3,6 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        RussoOne: ["Russo One", "sans-serif"],
+        BungeeShade: ["Bungee Shade", "sans-serif"],
+      },
+
       backdropBlur: {
         xs: "2px",
       },
@@ -10,9 +15,11 @@ export default {
       colors: {
         "black-clear": "rgba(0, 0, 0, 0.54)",
       },
+
       animation: {
         shake: "shake 0.8s cubic-bezier(.36,.07,.19,.97) both",
       },
+
       keyframes: {
         shake: {
           "10%, 90%": {
