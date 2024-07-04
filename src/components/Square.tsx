@@ -17,25 +17,24 @@ const Square: React.FC<SquareProps> = ({
   isTied,
 }) => {
   const [isActive, setIsActive] = useState<string>("");
+  const [isCooldown, setIsCooldown] = useState<boolean>(false);
 
-  // ----DISPATCH HANDLECLICK AND FLIPS CARD BY SETTING/REMOVING THE ACTIVE CLASS----- //
   const handleAction = () => {
-    if (handleClick(index)) {
-      setIsActive("active border-[#19C0F5]");
+    if (isCooldown) return;
 
-      setTimeout(() => {
-        setIsActive("");
-      }, 900);
+    setIsCooldown(true);
+    setTimeout(() => setIsCooldown(false), 1500);
 
-      return;
-    }
+    const actionSuccess = handleClick(index);
+    const activeClass = actionSuccess
+      ? "active border-[#19C0F5]"
+      : "md:hover:border-red-500 border-red-500 animate-shake";
 
-    // -----SHOWS ALERT FOR CARD ALREADY SELECTED----- //
-    setIsActive("md:hover:border-red-500 border-red-500 animate-shake");
+    setIsActive(activeClass);
 
-    setTimeout(() => {
-      setIsActive("");
-    }, 400);
+    const timeOutDuration = actionSuccess ? 900 : 400;
+
+    setTimeout(() => setIsActive(""), timeOutDuration);
   };
 
   return (
