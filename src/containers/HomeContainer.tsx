@@ -4,7 +4,7 @@ const HomeContainer: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col justify-center w-[95%] sm:w-[50%] max-w-[400px] gap-5 m-auto mt-10 border-2 p-8 home-container">
+    <div className="flex flex-col justify-center w-[95%] sm:w-[50%] max-w-[400px] gap-5 m-auto mt-10 border-2 p-8 home-container bg-black/25 backdrop-blur-md">
       <h1 className="text-[2.25rem] text-white text-center">HOW TO PLAY</h1>
 
       <div className="text-center text-white rules-container">
