@@ -25,7 +25,14 @@ const Card: React.FC<CardProps> = ({
         <p className="absolute text-[.55rem] top-1 z-10 md:text-[1.4rem] lg:text-[1.5rem] md:top-2 text-white">
           TIC-TAC-MEMO
         </p>
-        <p className="md:text-[8rem] z-10 text-[3.5rem] bg-clip-text bg-gradient-to-t text-transparent from-[#19C0F5] via-[#003865] to-[#1DA8DF]">
+        <p
+          className={
+            "md:text-[8rem] z-10 text-[3.5rem] bg-clip-text bg-gradient-to-t text-transparent " +
+            (board[index] === "O"
+              ? "from-[#E84757] via-[#8B2635] to-[#F58CA9]"
+              : "from-[#19C0F5] via-[#003865] to-[#1DA8DF]")
+          }
+        >
           {board[index]}
         </p>
         <p className="absolute z-0 md:text-[2.7rem] text-[1.1rem] bottom-0 md:-bottom-2">

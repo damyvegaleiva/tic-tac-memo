@@ -78,9 +78,19 @@ const BoardContainer = () => {
   };
 
   return (
-    <main className="flex flex-col gap-5 mt-10 md:gap-4">
-      <h2 className="text-lg text-center text-white md:text-3xl font-RussoOne">
-        Turn: <span className="underline">Player {currentPlayer}</span>
+    <main className="flex flex-col gap-5 mt-5 md:gap-4">
+      <h2 className="px-3 py-1 m-auto text-lg text-center text-black rounded-md bg-white/90 w-fit md:text-3xl font-RussoOne">
+        Turn: <span className="underline">Player</span>{" "}
+        <span
+          className={
+            "bg-clip-text bg-gradient-to-t text-transparent " +
+            (currentPlayer === "O"
+              ? "from-[#E84757] via-[#8B2635] to-[#F58CA9]"
+              : "from-[#19C0F5] via-[#003865] to-[#1DA8DF]")
+          }
+        >
+          {currentPlayer}
+        </span>
       </h2>
 
       <Board
